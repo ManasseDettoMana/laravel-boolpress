@@ -16,9 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $post = Post::all();
         $categories = Category::all();
-        return view('admin.posts.index', compact('posts', 'categories'));
+        return view('admin.posts.index', compact('post', 'categories'));
     }
 
     /**
@@ -28,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $post = new Post();
+        $categories = Category::all();
+        return view('admin.posts.create', compact('post', 'categories'));
     }
 
     /**
@@ -39,6 +41,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required|string|max:30',
+            'author' => 'required|string|max:30',
+            'post_content' => 'required|string',
+            'category_id' => 'nullable',
+        ],
+        [
+            'required' => 'Devi compilare correttamente :attribute',
+            'title.required' => 'Non è possibile inserire un post senza titolo',
+            'author.max' => 'Non è possibile inserire un autore con più di 30 caratteri',
+        ]);
+
+
         $data = $request->all();
         $post = new Post();
         

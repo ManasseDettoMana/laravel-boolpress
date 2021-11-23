@@ -7,11 +7,13 @@
                 {{session('delete') }} è stato eliminato con successo!
             </div>
         @endif
+        <h1>Posts</h1>
+        <a href="{{route('admin.posts.create')}}" >Aggiungi un nuovo post</a>
         <table>
             <thead>
                 <tr>
-                    <th>Posts</th>      
-                    <th><a href="{{route('admin.posts.create')}}" >Aggiungi un nuovo post</a></th>      
+                    <th>Titolo</th>         
+                    <th>Autore</th>   
                 </tr>
             </thead>
             <tbody>
@@ -21,17 +23,22 @@
                         <td>
                             <div class="">
                                 <h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2>
-                                <h4>{{$post->author}}</h4>
                             </div>
                         </td>
                         <td>
-                            <a href="{{route('admin.posts.edit', $post->id)}}" >Edit Post</a>
+                            <h6>{{$post->author}}</h6>
+                        </td>
+                        <td>
+                            {{-- <h6>{{$post->}}</h6> --}}
+                        </td>
+                        <td>
+                            <a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a>
                         </td>
                         <td>
                             <form method="POST" action="{{route('admin.posts.destroy', $post)}}" class="delete-form" data-post-id="{{$post->id}}" data-post-title="{{$post->title}}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this item?');">
+                                <input type="submit" value="Delete" onclick="return confirm('Sei sicura/o di voler eliminare questo post?');">
                             </form>
                         </td>
                     </tr>   
