@@ -31,7 +31,7 @@
                             <form method="POST" action="{{route('admin.posts.destroy', $post)}}" class="delete-form" data-post-id="{{$post->id}}" data-post-title="{{$post->title}}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Delete">
+                                <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this item?');">
                             </form>
                         </td>
                     </tr>   
@@ -42,19 +42,20 @@
 @endsection
 @section('scripts-section')
     
-<script>
-    const deleteFormElements = document.querySelectorAll('.delete-form');
-    deleteFormElements.forEach(form =>{
-        form.addEventListener('submit', function(event){
-            event.preventDefault();
-            const id = form.getAttribute('data-post-id');
-            const title = form.getAttribute('data-post-title');
-            const confirm = window.confirm(`Sei sicura/o di voler eliminare  ${title} dalla lista?`);
-            if(confirm)
-            {
-                this.submit();
-            }
+{{-- <script>
+        console.log('askdbadgbaskd');
+        const deleteFormElements = document.querySelectorAll('.delete-form');
+        deleteFormElements.forEach(form =>{
+            form.addEventListener('submit', function(event){
+                event.preventDefault();
+                const id = form.getAttribute('data-post-id');
+                const title = form.getAttribute('data-post-title');
+                const confirm = window.confirm(`Sei sicura/o di voler eliminare  ${title} dalla lista?`);
+                if(confirm)
+                {
+                    this.submit();
+                }
+            });
         });
-    });
-</script>
+    </script> --}}
 @endsection
