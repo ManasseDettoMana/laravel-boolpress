@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>Titolo</th>         
+                    <th>Categoria</th>   
                     <th>Autore</th>   
                 </tr>
             </thead>
@@ -20,20 +21,10 @@
                 
                 @foreach ($posts as $post)
                     <tr>
-                        <td>
-                            <div class="">
-                                <h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2>
-                            </div>
-                        </td>
-                        <td>
-                            <h6>{{$post->author}}</h6>
-                        </td>
-                        <td>
-                            {{-- <h6>{{$post->}}</h6> --}}
-                        </td>
-                        <td>
-                            <a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a>
-                        </td>
+                        <td><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
+                        <td><h6>@if($post->category != null) {{$post->category->name}} @else N.C. @endif</h6></td>
+                        <td><h6>{{$post->author}}</h6></td>
+                        <td><a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a></td>
                         <td>
                             <form method="POST" action="{{route('admin.posts.destroy', $post)}}" class="delete-form" data-post-id="{{$post->id}}" data-post-title="{{$post->title}}">
                                 @csrf
