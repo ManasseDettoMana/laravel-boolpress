@@ -9,6 +9,7 @@
         <h2>{{$post->title}}</h2>
         <h4>{{$post->author}}</h4>
         <p>{{$post->post_content}}</p>
+        <h3>Categoria: @if($post->category){{$post->category->name}} @else N.C. @endif</h3>
     </div>
     <div>
         <a href="{{route('admin.posts.edit', $post->id)}}">Edit</a>
