@@ -22,7 +22,7 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
-                        <td><h6>@if($post->category != null) {{$post->category->name}} @else N.C. @endif</h6></td>
+                        <td><h6>@if($post->category) {{$post->category->name}} @else N.C. @endif</h6></td>
                         <td><h6>{{$post->author}}</h6></td>
                         <td><a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a></td>
                         <td>

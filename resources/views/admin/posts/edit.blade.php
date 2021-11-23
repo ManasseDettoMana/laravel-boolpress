@@ -12,17 +12,17 @@
                 <label for="title">Titolo</label>
                 <input type="text" value="{{$post->title}}" name="title">
             </div>
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="category_id">Categoria</label>
                 <select name="category_id" id="category_id">
-                    <option value="">{{$categories->name}}</option>
+                    <option value="">Nessuna Categoria</option>
                     @foreach ($categories as $category)
                         <option 
                             @if (old('category_id') == $category->id) selected @endif
                             value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
             <div>
                 <label for="author">Autore</label>
                 <input type="text" value="{{$post->author}}" name="author">
