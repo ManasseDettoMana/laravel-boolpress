@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="category_id">Categoria</label>
                 <select name="category_id" id="category_id">
-                    <option value="">Nessuna Categoria</option>
+                    <option value="">@if($post->category) {{$post->category->name}} @else Nessuna Categoria @endif</option>
                     @foreach ($categories as $category)
                         <option 
                             @if (old('category_id') == $category->id) selected @endif
