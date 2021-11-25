@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Post;
 use App\Models\Category;
+use App\Models\Post;
 class PostController extends Controller
 {
     /**
@@ -42,20 +43,21 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'title' => 'required|string|max:30',
-        //     'user_id' => 'required|string|max:30',
-        //     'post_content' => 'required|string',
-        //     'category_id' => 'nullable',
-        // ],
-        // [
-        //     'required' => 'Devi compilare correttamente :attribute',
-        //     'title.required' => 'Non è possibile inserire un post senza titolo',
-        //     'user_id.max' => 'Non è possibile inserire un autore con più di 30 caratteri',
-        // ]);
+        $request->validate([
+            'title' => 'required|string|max:30',
+            // 'user_id' => 'required|string|max:30',
+            'post_content' => 'required|string',
+            'category_id' => 'nullable',
+        ],
+        [
+            'required' => 'Devi compilare correttamente :attribute',
+            'title.required' => 'Non è possibile inserire un post senza titolo',
+            // 'user_id.max' => 'Non è possibile inserire un autore con più di 30 caratteri',
+        ]);
 
 
         $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
         $post = new Post();
         
         $post->fill($data);

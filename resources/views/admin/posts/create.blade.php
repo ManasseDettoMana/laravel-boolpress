@@ -28,10 +28,10 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="user_id">Autore</label>
                 <input type="text" placeholder="Inserisci l'autore..." name="user_id" value="{{old('user_id', $post->user_id)}}">
-            </div>
+            </div> --}}
             
             <div class="form-group">
                 <label for="post_content">Contenuto</label>
