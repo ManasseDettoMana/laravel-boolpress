@@ -7,7 +7,7 @@
             <img src="{{$post->img_url}}" alt="">
         </picture>
         <h2>{{$post->title}}</h2>
-        <h4>{{$post->user_id}}</h4>
+        <h4>{{$post->user->name}}</h4>
         <p>{{$post->post_content}}</p>
         <address>Categoria: @if($post->category){{$post->category->name}} @else N.C. @endif</address>
     </div>
