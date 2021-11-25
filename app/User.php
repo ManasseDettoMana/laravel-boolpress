@@ -12,9 +12,7 @@ class User extends Authenticatable
 
 
     //se cambiamo nome alla fuinzione userInfo() per darle un nome che vogliamo noi, dobbiamo passare come parametro anche la foreign key
-    public function info(){
-        return $this->hasOne('App\Models\UserInfo', 'user_id');
-    }
+    
 
     /**
      * The attributes that are mass assignable.
@@ -42,4 +40,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function info(){
+        return $this->hasOne('App\Models\UserInfo', 'user_id');
+    }
+    
+    public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }
 }

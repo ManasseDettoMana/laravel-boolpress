@@ -23,7 +23,7 @@
                     <tr>
                         <td><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
                         <td><address>@if($post->category) {{$post->category->name}} @else N.C. @endif</address></td>
-                        <td><h6>{{$post->author}}</h6></td>
+                        <td><h6>{{$post->user_id}}</h6></td>
                         <td><a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a></td>
                         <td>
                             <form method="POST" action="{{route('admin.posts.destroy', $post)}}" class="delete-form" data-post-id="{{$post->id}}" data-post-title="{{$post->title}}">

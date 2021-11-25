@@ -8,6 +8,8 @@
         <form action="{{route('admin.posts.update', $post)}}" method="POST">
             @method('PUT')
             @csrf
+
+
             <div>
                 <label for="title">Titolo</label>
                 <input type="text" value="{{$post->title}}" name="title">
@@ -24,8 +26,8 @@
                 </select>
             </div>
             <div>
-                <label for="author">Autore</label>
-                <input type="text" value="{{$post->author}}" name="author">
+                <label for="user_id">Autore</label>
+                <input type="text" value="{{$post->user_id}}" name="user_id">
             </div>
             <div>
                 <label for="post_content">Contenuto</label>

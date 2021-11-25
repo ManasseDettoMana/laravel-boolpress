@@ -29,8 +29,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="author">Autore</label>
-                <input type="text" placeholder="Inserisci l'autore..." name="author" value="{{old('author', $post->author)}}">
+                <label for="user_id">Autore</label>
+                <input type="text" placeholder="Inserisci l'autore..." name="user_id" value="{{old('user_id', $post->user_id)}}">
             </div>
             
             <div class="form-group">

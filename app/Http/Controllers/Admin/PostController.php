@@ -42,17 +42,17 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'title' => 'required|string|max:30',
-            'author' => 'required|string|max:30',
-            'post_content' => 'required|string',
-            'category_id' => 'nullable',
-        ],
-        [
-            'required' => 'Devi compilare correttamente :attribute',
-            'title.required' => 'Non è possibile inserire un post senza titolo',
-            'author.max' => 'Non è possibile inserire un autore con più di 30 caratteri',
-        ]);
+        // $request->validate([
+        //     'title' => 'required|string|max:30',
+        //     'user_id' => 'required|string|max:30',
+        //     'post_content' => 'required|string',
+        //     'category_id' => 'nullable',
+        // ],
+        // [
+        //     'required' => 'Devi compilare correttamente :attribute',
+        //     'title.required' => 'Non è possibile inserire un post senza titolo',
+        //     'user_id.max' => 'Non è possibile inserire un autore con più di 30 caratteri',
+        // ]);
 
 
         $data = $request->all();

@@ -33,7 +33,7 @@ class CreateUserInfosTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function(Blueprint $table){
+        Schema::table('user_infos', function(Blueprint $table){
             $table->dropForeign('user_infos_user_id_foreign');  
         });
 

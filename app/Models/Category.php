@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    // protected $fillable = ['HTML', 'CSS', 'JS', 'PHP', 'MySQL', 'Laravel', 'Vue'];
+    protected $fillable = ['HTML', 'CSS', 'JS', 'PHP', 'MySQL', 'Laravel', 'Vue'];
     public function posts()
     {
         return $this->hasMany('App\Models\Post');
