@@ -68,10 +68,10 @@ class PostController extends Controller
 
 
         // QUESTA OPERAZIONE SI FA DOPO IL SAVE PERCHÈ ALTRIMENTI PRIMA NON ESISTEREBBE ALCUN POST DA CUI PRENDERE QUESTI TAGS.
-        //se esiste una chiave 'tags' nell'array data, allora attacca tutti i tag selezionati al post con il metodo attach
+        //se esiste una chiave 'tags' nell'array data, allora attacca tutti i tag selezionati al post con il metodo sync
         if(array_key_exists('tags', $data))
         {
-            $post->tags()->attach($data['tags']);
+            $post->tags()->sync($data['tags']);
         }
 
         return redirect()->route('admin.posts.index');

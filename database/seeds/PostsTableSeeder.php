@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\User;
 use Faker\Generator as Faker;
 class PostsTableSeeder extends Seeder
@@ -19,6 +20,7 @@ class PostsTableSeeder extends Seeder
     {
         $categories_id = Category::pluck('id')->toArray();
         $user_ids  = User::pluck('id')->toArray();
+        $tags_id  = Tag::pluck('id')->toArray();
 
         for($i = 0; $i < 50; $i++)
         {
@@ -29,11 +31,13 @@ class PostsTableSeeder extends Seeder
             $newPost->post_content = $faker->sentence(5);
             $newPost->img_url = $faker->imageUrl(300, 300, $newPost->title, true);
             $newPost->slug = Str::slug($newPost->title, '-');
-
             $newPost->category_id = Arr::random($categories_id); 
 
 
             $newPost->save();
+
+
+            $newPost->tags()->sync(Arr::random($tags_id));
         }
     }
 }
