@@ -11,11 +11,12 @@
 
 
             <div>
-                <label for="title">Titolo</label>
+                {{-- <label for="title">Titolo</label> --}}
+                <legend>Titolo</legend>
                 <input type="text" value="{{$post->title}}" name="title">
             </div>
             <div class="form-group">
-                <label for="category_id">Categoria</label>
+                <legend >Categoria</legend>
                 <select name="category_id" id="category_id">
                     <option value="">@if($post->category) {{$post->category->name}} @else Nessuna Categoria @endif</option>
                     @foreach ($categories as $category)
@@ -25,15 +26,24 @@
                     @endforeach
                 </select>
             </div>
-            <div>
-                <label for="user_id">Autore: {{$post->user->name}}</label>
+            <div class="mt-2 mb-2">
+                <legend>Tags</legend>
+                @foreach ($tags as $tag)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}" name="tags[]">
+                        <label class="form-check-label" for="tag-{{$tag->id}}">{{$tag->name}}</label>
+                    </div>
+                @endforeach
             </div>
             <div>
-                <label for="post_content">Contenuto</label>
+                <legend for="user_id">Autore: {{$post->user->name}}</legend>
+            </div>
+            <div>
+                <legend>Contenuto</legend>
                 <input type="text" value="{{$post->post_content}}" name="post_content">
             </div>
             <div>
-                <label for="img_url">Immagine</label>
+                <legend >Immagine</legend>
                 <input type="text" value="{{$post->img_url}}" name="img_url">
             </div>
             <input type="submit" value="Invia">
