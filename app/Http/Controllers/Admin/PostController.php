@@ -113,7 +113,14 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {   
         $data = $request->all();
-        $post->update($data);
+        $data['user_id'] = Auth::user()->id;
+        $post->update();   
+
+        if(array_key_exists('tags', $data))
+        {
+            $post->tags()->sync($data['tags']);
+        }
+
         return redirect()->route('admin.posts.show', $post);
     }
 

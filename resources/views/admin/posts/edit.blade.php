@@ -26,11 +26,12 @@
                     @endforeach
                 </select>
             </div>
-            <div class="mt-2 mb-2">
+            <div class="mt-2 mb-2 form-group">
                 <legend>Tags</legend>
                 @foreach ($tags as $tag)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}" name="tags[]" @if(in_array($tag->id, $tag_ids)) checked  @endif>
+                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}" name="tags[]" 
+                            @if(in_array($tag->id, old('tags', $tag_ids ? $tag_ids : []))) checked  @endif>
                         <label class="form-check-label" for="tag-{{$tag->id}}">{{$tag->name}}</label>
                     </div>
                 @endforeach
