@@ -25,12 +25,8 @@
                     @endforeach
                 </select>
             </div>
-            {{-- <div>
-                <label for="user_id">Autore</label>
-                <input type="text" value="{{$post->user_id}}" name="user_id">
-            </div> --}}
             <div>
-                <label for="user_id">Autore: {{$post->user_id}}</label>
+                <label for="user_id">Autore: {{$post->user->name}}</label>
             </div>
             <div>
                 <label for="post_content">Contenuto</label>
