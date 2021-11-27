@@ -14,6 +14,7 @@
                 <tr>
                     <th>Titolo</th>         
                     <th>Categoria</th>   
+                    <th>Tags</th>   
                     <th>Autore</th>   
                 </tr>
             </thead>
@@ -23,6 +24,13 @@
                     <tr>
                         <td><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
                         <td><address>@if($post->category) {{$post->category->name}} @else N.C. @endif</address></td>
+                        <td class="">
+                            @forelse ($post->tags as $tag)
+                                <span class="badge badge-pill p-2" style="background-color: {{$tag->color}};">{{$tag->name}}</span>
+                            @empty
+                                <span class="badge badge-pill">-</span>
+                            @endforelse
+                        </td>
                         <td><h6>{{$post->user->name}}</h6></td>
                         <td><a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a></td>
                         <td>
