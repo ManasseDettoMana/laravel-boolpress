@@ -11,8 +11,8 @@
 
 
             <div>
-                {{-- <label for="title">Titolo</label> --}}
-                <legend>Titolo</legend>
+                <label for="title">Titolo</label>
+                {{-- <legend for="title">Titolo</legend> --}}
                 <input type="text" value="{{$post->title}}" name="title">
             </div>
             <div class="form-group">
