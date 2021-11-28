@@ -44,6 +44,11 @@
                 @endforeach
             </tbody>
         </table>
+        <footer>
+            <div class="mt-5">
+                {{$posts->links()}}
+            </div>
+        </footer>
     </div>
 @endsection
 @section('scripts-section')
