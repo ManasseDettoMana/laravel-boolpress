@@ -4,8 +4,8 @@
     <a href="{{route('admin.users.index')}}">Torna alla lista utenti</a>
     <div class="card">
         <h4>{{$user->id}}</h4>
-        <h2>{{$user->name}}</h2>
-
+        <h2>Utente: {{$user->name}}</h2>
+        <h3>Ruolo: {{$role->name}}</h3>
         <address>{{$user->email}}</address>
         
     </div>

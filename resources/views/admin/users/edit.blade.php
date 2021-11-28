@@ -5,14 +5,13 @@
 
         <a href="{{route('admin.posts.index')}}">Home</a>
 
-        <form action="{{route('admin.posts.update', $post)}}" method="POST">
+        {{-- <form action="{{route('admin.posts.update', $post)}}" method="POST">
             @method('PUT')
             @csrf
 
 
             <div>
                 <label for="title">Titolo</label>
-                {{-- <legend for="title">Titolo</legend> --}}
                 <input type="text" value="{{$post->title}}" name="title">
             </div>
             <div class="form-group">
@@ -50,6 +49,6 @@
             <input type="submit" value="Invia">
             <a href="{{route('admin.posts.show', $post->id)}}">Annulla</a>
 
-        </form>
+        </form> --}}
     </div>
 @endsection

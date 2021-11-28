@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container d-flex justify-content-between">
     {{-- <div class="row justify-content-center" id="status_row">
         <div class="col-md-8">
             <div class="card">
@@ -21,7 +21,8 @@
             </div>
         </div>
     </div> --}}
-    <a href="{{route('admin.posts.index')}}">Dashboard</a>
+    <a href="{{route('admin.posts.index')}}">Tutti i post</a>
+    <a href="{{route('admin.users.index')}}">Tutti gli utenti</a>
 </div>
 
 

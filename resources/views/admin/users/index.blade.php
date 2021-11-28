@@ -29,7 +29,13 @@
                         <td class=""><h2><a href="{{route('admin.users.show', $user->id)}}">{{$user->id}}</a></h2></td>
                         <td class=""><h6><a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a></h6></td>
                         <td class=""><h6>{{$user->email}}</h6></td>
-                        <td></td>
+                        <td>
+                            @forelse ($user->roles as $role)
+                                {{$role->name}}
+                            @empty
+                                Nessun Ruolo.   
+                            @endforelse
+                        </td>
                         <td class="">
                             <a href="{{route('admin.users.edit', $user->id)}}" class="mr-3" >Edit User</a>
                         </td>
