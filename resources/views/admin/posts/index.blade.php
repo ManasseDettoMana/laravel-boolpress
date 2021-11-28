@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 
-                @foreach ($posts as $post)
+                @forelse ($posts as $post)
                     <tr>
                         <td class="col-4"><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
                         <td class="col-2"><address>@if($post->category) {{$post->category->name}} @else N.C. @endif</address></td>
@@ -41,7 +41,9 @@
                             </form>
                         </td>
                     </tr>   
-                @endforeach
+                    @empty
+                        <td class="col-12">Non ci sono post da visualizzare</td>
+                @endforelse
             </tbody>
         </table>
         <footer>
