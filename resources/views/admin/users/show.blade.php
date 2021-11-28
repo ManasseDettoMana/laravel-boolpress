@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{route('admin.posts.index')}}">Torna ai post</a>
+    <a href="{{route('admin.users.index')}}">Torna alla lista utenti</a>
     <div class="card">
-        <picture>
-            <img src="{{$post->img_url}}" alt="">
-        </picture>
-        <h2>{{$post->title}}</h2>
-        <h4>{{$post->user->name}}</h4>
-        <p>{{$post->post_content}}</p>
-        <address>Categoria: @if($post->category){{$post->category->name}} @else N.C. @endif</address>
+        <h4>{{$user->id}}</h4>
+        <h2>{{$user->name}}</h2>
+
+        <address>{{$user->email}}</address>
+        
     </div>
     <div>
-        <a href="{{route('admin.posts.edit', $post->id)}}">Edit</a>
+        <a href="{{route('admin.users.edit', $user->id)}}">Edit</a>
     </div>
 @endsection

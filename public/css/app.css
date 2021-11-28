@@ -10022,3 +10022,7 @@ h3 {
 .closed {
   display: none;
 }
+
+td {
+  border: 1px solid #c4c4c4;
+}

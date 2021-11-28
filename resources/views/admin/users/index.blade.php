@@ -7,38 +7,38 @@
                 {{session('delete') }} è stato eliminato con successo!
             </div>
         @endif
-        <h1>Posts</h1>
-        <a href="{{route('admin.posts.create')}}" >Aggiungi un nuovo post</a>
+        <header>
+            <h1>Utenti registrati</h1>
+            <a href="{{route('admin.users.create')}}" >Aggiungi un nuovo utente</a>
+        </header>
         <table>
             <thead>
                 <tr>
-                    <th>Titolo</th>         
-                    <th>Categoria</th>   
-                    <th>Tags</th>   
-                    <th>Autore</th>   
+                    <th class="col-1">ID</th>         
+                    <th class="col-3">Nome</th>   
+                    <th class="col-4">Indirizzo Email</th>   
+                    <th class="col-2">Ruoli</th>   
+                    <th class="col-1"></th>   
+                    <th class="col-1"></th>   
                 </tr>
             </thead>
             <tbody>
                 
-                @foreach ($posts as $post)
+                @foreach ($users as $user)
                     <tr>
-                        <td><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
-                        <td><address>@if($post->category) {{$post->category->name}} @else N.C. @endif</address></td>
+                        <td class=""><h2><a href="{{route('admin.users.show', $user->id)}}">{{$user->id}}</a></h2></td>
+                        <td class=""><h6><a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a></h6></td>
+                        <td class=""><h6>{{$user->email}}</h6></td>
+                        <td></td>
                         <td class="">
-                            @forelse ($post->tags as $tag)
-                                <span class="badge badge-pill p-2" style="background-color: {{$tag->color}};">{{$tag->name}}</span>
-                            @empty
-                                <span class="badge badge-pill">-</span>
-                            @endforelse
+                            <a href="{{route('admin.users.edit', $user->id)}}" class="mr-3" >Edit User</a>
                         </td>
-                        <td><h6>{{$post->user->name}}</h6></td>
-                        <td><a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a></td>
                         <td>
-                            <form method="POST" action="{{route('admin.posts.destroy', $post)}}" class="delete-form" data-post-id="{{$post->id}}" data-post-title="{{$post->title}}">
+                            <form method="POST" action="{{route('admin.users.destroy', $user)}}" class="delete-form" data-user-id="{{$user->id}}" data-user-title="{{$user->title}}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Delete" onclick="return confirm('Sei sicura/o di voler eliminare questo post?');">
-                            </form>
+                                <input type="submit" value="Delete" onclick="return confirm('Sei sicura/o di voler eliminare questo utente?');">
+                            </form> 
                         </td>
                     </tr>   
                 @endforeach

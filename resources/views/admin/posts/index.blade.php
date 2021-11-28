@@ -12,28 +12,28 @@
         <table>
             <thead>
                 <tr>
-                    <th>Titolo</th>         
-                    <th>Categoria</th>   
-                    <th>Tags</th>   
-                    <th>Autore</th>   
+                    <th class="col-4">Titolo</th>         
+                    <th class="col-2">Categoria</th>   
+                    <th class="col-2">Tags</th>   
+                    <th class="col-2">Autore</th>   
                 </tr>
             </thead>
             <tbody>
                 
                 @foreach ($posts as $post)
                     <tr>
-                        <td><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
-                        <td><address>@if($post->category) {{$post->category->name}} @else N.C. @endif</address></td>
-                        <td class="">
+                        <td class="col-4"><h2><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h2></td>
+                        <td class="col-2"><address>@if($post->category) {{$post->category->name}} @else N.C. @endif</address></td>
+                        <td class="col-2">
                             @forelse ($post->tags as $tag)
                                 <span class="badge badge-pill p-2" style="background-color: {{$tag->color}};">{{$tag->name}}</span>
                             @empty
                                 <span class="badge badge-pill">-</span>
                             @endforelse
                         </td>
-                        <td><h6>{{$post->user->name}}</h6></td>
-                        <td><a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a></td>
-                        <td>
+                        <td class="col-2"><h6>{{$post->user->name}}</h6></td>
+                        <td class="col-4">
+                            <a href="{{route('admin.posts.edit', $post->id)}}" class="mr-3" >Edit Post</a>
                             <form method="POST" action="{{route('admin.posts.destroy', $post)}}" class="delete-form" data-post-id="{{$post->id}}" data-post-title="{{$post->title}}">
                                 @csrf
                                 @method('DELETE')
