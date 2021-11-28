@@ -49,7 +49,8 @@ class PostController extends Controller
             'title' => 'required|string|max:30',
             // 'user_id' => 'required|string|max:30',
             'post_content' => 'required|string',
-            'category_id' => 'nullable',
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
         ],
         [
             'required' => 'Devi compilare correttamente :attribute',
@@ -112,9 +113,23 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {   
+
+        $request->validate([
+            'title' => 'required|string|max:30',
+            // 'user_id' => 'required|string|max:30',
+            'post_content' => 'required|string',
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
+        ],
+        [
+            'required' => 'Devi compilare correttamente :attribute',
+            'title.required' => 'Non è possibile inserire un post senza titolo',
+            // 'user_id.max' => 'Non è possibile inserire un autore con più di 30 caratteri',
+        ]);
+
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
-        $post->update();   
+        $post->update($data);   
 
         if(array_key_exists('tags', $data))
         {
@@ -132,6 +147,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->tags)
+        {
+            $post->tags()->detach();    
+        }
         $post->delete();
         return redirect()->route('admin.posts.index')->with('delete', $post->title);
     }
