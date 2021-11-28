@@ -12,10 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Guests\HomeController@index')->name('guests.home');
 
 Auth::routes();
 
@@ -27,4 +24,10 @@ Route::middleware('auth')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('posts', PostController::class);
+        Route::resource('users', UserController::class);
 });
+
+
+Route::get('{any?}', function(){
+    return view('guests.404');
+})->where('any', '.*');
