@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <h1>Boolpress</h1>
-        <nav>
-            <ul></ul>
-        </nav>
+            
+        <PostList />
     </div>
 </template>
 
 <script>
+import PostList from './Posts/PostList.vue'
     export default {
        name: 'App', 
        data(){
@@ -15,15 +15,12 @@
                 variable: ''
           }
        },
-       components: {}
+       components: {
+           PostList
+       }
     }
 </script>
 
 <style scoped lang="scss">
-    .container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+    
 </style>

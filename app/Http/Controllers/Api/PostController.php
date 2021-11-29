@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Post;
+use App\User;
 class PostController extends Controller
 {
     /**
@@ -14,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        foreach($posts as $post){
+            $post->author = $post->user->name;
+            // $post->author = User::find($post_user_id)->name;
+        }
+        return response()->json(compact('posts'));
     }
 
     /**

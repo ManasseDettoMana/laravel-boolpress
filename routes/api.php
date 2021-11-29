@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::namespace('Api')->name("api.")->group(function(){
+    // name mai obbligatorio in api.php
+    // Route::get('/posts', 'PostController@index')->name('api.posts.index'); 
+    // Route::get('/posts/{post}', 'PostController@show'); 
+    Route::resource('posts', 'PostController');
+});
